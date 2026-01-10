@@ -38,7 +38,7 @@ export default function ServicesPage() {
                     <div className="absolute inset-0 flex flex-col justify-center px-12 md:px-24">
                         <div className="w-16 h-[6px] bg-white mb-4"></div>
                         <h1 className="text-white font-bold leading-tight uppercase" style={{ fontSize: '40px' }}>
-                            Our<br />CAREERS
+                            Our<br />CONTACT US
                         </h1>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ export default function ServicesPage() {
                             {/* HEADING WITH SHORT UNDERLINE */}
                             <div className="mb-12 inline-block p-4 pt-8">
                                 <h2 className="text-4xl font-bold text-black leading-none">
-                                    CONTACT US
+                                    Careers
                                 </h2>
                                 <div className="w-12 h-1.5 bg-black mt-3"></div>
                                 <p className="text-[15px] leading-relaxed mb-6 pt-2  text-gray-700">
