@@ -124,6 +124,7 @@ export default function Header() {
                     </li>
                 </ul>
 
+
                 {/* Mobile Menu Icon */}
                 <div className="lg:hidden text-[#8b0037] text-2xl cursor-pointer">☰</div>
             </nav>
