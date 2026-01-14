@@ -13,7 +13,7 @@ export default function ManagementTeam() {
     const menuItems = [
         { name: "The Company", href: "/about/the-company" },
         { name: "Vision & Mission", href: "/about/vision-mission" },
-        { name: "Corporate Information", href: "/about/coperate-information" },
+        { name: "Corporate Information", href: "/about/corporate-information" },
         { name: "Directors", href: "/about/directors" },
         { name: "Management Team", href: "/about/management-team" },
         { name: "Sponsors", href: "/about/sponsors" },
@@ -59,7 +59,7 @@ export default function ManagementTeam() {
                 <div className="bg-[#F7F7F7] w-full py-8">
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="bg-white shadow-xl border border-gray-100 p-6 md:p-10 flex flex-col md:flex-row gap-8">
-                            
+
                             {/* LEFT CONTENT: Management Accordion */}
                             <div className="flex-grow md:w-2/3">
                                 <div className="mb-6 inline-block">
@@ -71,11 +71,10 @@ export default function ManagementTeam() {
                                     {team.map((member, index) => (
                                         <div key={index} className="border border-gray-200 rounded-sm overflow-hidden">
                                             {/* Accordion Header */}
-                                            <button 
+                                            <button
                                                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                                                className={`w-full flex justify-between items-center p-3 text-left transition-all ${
-                                                    openIndex === index ? "bg-[#8b0037] text-white" : "bg-white text-[#8b0037] hover:bg-gray-50"
-                                                }`}
+                                                className={`w-full flex justify-between items-center p-3 text-left transition-all ${openIndex === index ? "bg-[#8b0037] text-white" : "bg-white text-[#8b0037] hover:bg-gray-50"
+                                                    }`}
                                             >
                                                 <span className="text-[16px] font-bold">
                                                     {member.name} - <span className={openIndex === index ? "text-white/90 font-medium" : "text-gray-600 font-medium"}>{member.designation}</span>
@@ -114,11 +113,10 @@ export default function ManagementTeam() {
                                     <ul className="flex flex-col bg-white">
                                         {menuItems.map((item, index) => (
                                             <li key={index} className="border-b border-gray-100 last:border-none">
-                                                <Link 
-                                                    href={item.href} 
-                                                    className={`flex items-center px-4 py-2.5 text-[13px] font-semibold ${
-                                                        pathname === item.href ? "text-[#8b0037] bg-gray-50" : "text-gray-700 hover:text-[#8b0037] hover:bg-gray-50"
-                                                    }`}
+                                                <Link
+                                                    href={item.href}
+                                                    className={`flex items-center px-4 py-2.5 text-[13px] font-semibold ${pathname === item.href ? "text-[#8b0037] bg-gray-50" : "text-gray-700 hover:text-[#8b0037] hover:bg-gray-50"
+                                                        }`}
                                                 >
                                                     <span className="mr-2 text-gray-400">&gt;</span>{item.name}
                                                 </Link>

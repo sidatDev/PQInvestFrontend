@@ -13,7 +13,7 @@ export default function Sponsors() {
     const menuItems = [
         { name: "The Company", href: "/about/the-company" },
         { name: "Vision & Mission", href: "/about/vision-mission" },
-        { name: "Corporate Information", href: "/about/coperate-information" },
+        { name: "Corporate Information", href: "/about/corporate-information" },
         { name: "Directors", href: "/about/directors" },
         { name: "Management Team", href: "/about/management-team" },
         { name: "Sponsors", href: "/about/sponsors" },
@@ -34,10 +34,10 @@ export default function Sponsors() {
             <main className="flex-grow">
                 {/* --- Banner Section --- */}
                 <div className="relative w-full h-[280px]">
-                    <Image 
-                        src="/AboutUS-1200x346.png" 
-                        alt="Sponsors Banner" 
-                        fill 
+                    <Image
+                        src="/AboutUS-1200x346.png"
+                        alt="Sponsors Banner"
+                        fill
                         className="object-cover"
                         priority
                     />
@@ -56,7 +56,7 @@ export default function Sponsors() {
 
                 {/* --- Content Section (BG Color Applied Here) --- */}
                 <div className="bg-[#F7F7F7] w-full py-6 relative overflow-hidden">
-                    
+
                     {/* --- BACKGROUND VECTORS --- */}
                     {/* Left Vector */}
                     <div className="absolute left-0 top-10 opacity-30 pointer-events-none">
@@ -69,7 +69,7 @@ export default function Sponsors() {
 
                     <div className="max-w-7xl mx-auto px-4 relative z-10">
                         <div className="bg-white shadow-xl border border-gray-100 p-6 md:p-8 flex flex-col md:flex-row gap-6">
-                            
+
                             {/* LEFT CONTENT */}
                             <div className="flex-grow md:w-2/3">
                                 <div className="mb-4 inline-block">
@@ -81,11 +81,10 @@ export default function Sponsors() {
                                     {sponsors.map((item, index) => (
                                         <div key={index} className="border border-gray-200 rounded-sm overflow-hidden shadow-sm">
                                             {/* Accordion Header */}
-                                            <button 
+                                            <button
                                                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                                                className={`w-full flex justify-between items-center p-3 text-left transition-all ${
-                                                    openIndex === index ? "bg-[#8b0037] text-white" : "bg-white text-[#8b0037] hover:bg-gray-50"
-                                                }`}
+                                                className={`w-full flex justify-between items-center p-3 text-left transition-all ${openIndex === index ? "bg-[#8b0037] text-white" : "bg-white text-[#8b0037] hover:bg-gray-50"
+                                                    }`}
                                             >
                                                 <span className="text-[16px] font-bold tracking-tight uppercase">
                                                     {item.name}
@@ -124,11 +123,10 @@ export default function Sponsors() {
                                     <ul className="flex flex-col bg-white">
                                         {menuItems.map((item, index) => (
                                             <li key={index} className="border-b border-gray-100 last:border-none">
-                                                <Link 
-                                                    href={item.href} 
-                                                    className={`flex items-center px-4 py-2.5 text-[13px] font-semibold transition-all ${
-                                                        pathname === item.href ? "text-[#8b0037] bg-gray-50" : "text-gray-700 hover:text-[#8b0037] hover:bg-gray-50"
-                                                    }`}
+                                                <Link
+                                                    href={item.href}
+                                                    className={`flex items-center px-4 py-2.5 text-[13px] font-semibold transition-all ${pathname === item.href ? "text-[#8b0037] bg-gray-50" : "text-gray-700 hover:text-[#8b0037] hover:bg-gray-50"
+                                                        }`}
                                                 >
                                                     <span className="mr-2 text-gray-400">&gt;</span>{item.name}
                                                 </Link>

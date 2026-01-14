@@ -134,10 +134,10 @@ export default function Header() {
                                         Management Team
                                     </Link>
                                     <Link
-                                        href="/about/our-sponsors"
+                                        href="/about/sponsors"
                                         className="text-[#333] text-[14px] underline decoration-1 underline-offset-4 hover:text-black w-fit"
                                     >
-                                       Our Sponsors
+                                        Our Sponsors
                                     </Link>
                                 </div>
                             </div>

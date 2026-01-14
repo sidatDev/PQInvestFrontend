@@ -11,7 +11,7 @@ export default function TheCompany() {
     const menuItems = [
         { name: "The Company", href: "/about/the-company" },
         { name: "Vision & Mission", href: "/about/vision-mission" },
-        { name: "Corporate Information", href: "/about/coperate-information" },
+        { name: "Corporate Information", href: "/about/corporate-information" },
         { name: "Directors", href: "/about/directors" },
         { name: "Management Team", href: "/about/management-team" },
         { name: "Sponsors", href: "/about/sponsors" },

@@ -13,7 +13,7 @@ export default function VisionMission() {
     const menuItems = [
         { name: "The Company", href: "/about/the-company" },
         { name: "Vision & Mission", href: "/about/vision-mission" },
-        { name: "Corporate Information", href: "/about/coperate-information" },
+        { name: "Corporate Information", href: "/about/corporate-information" },
         { name: "Directors", href: "/about/directors" },
         { name: "Management Team", href: "/about/management-team" },
         { name: "Sponsors", href: "/about/sponsors" },
@@ -54,7 +54,7 @@ export default function VisionMission() {
                 <div className="bg-[#F7F7F7] w-full py-6">
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="bg-white shadow-xl border border-gray-100 p-6 md:p-8 flex flex-col md:flex-row gap-6">
-                            
+
                             {/* LEFT AREA */}
                             <div className="flex-grow md:w-2/3">
                                 <div className="mb-4 inline-block">
@@ -64,10 +64,10 @@ export default function VisionMission() {
 
                                 {/* IMAGE (Height reduced for compactness) */}
                                 <div className="relative w-full h-[320px] mb-6 overflow-hidden shadow-sm rounded-sm">
-                                    <Image 
-                                        src="/vision-mision.jpg" 
-                                        alt="Vision Mission" 
-                                        fill 
+                                    <Image
+                                        src="/vision-mision.jpg"
+                                        alt="Vision Mission"
+                                        fill
                                         className="object-cover"
                                     />
                                 </div>
@@ -96,7 +96,7 @@ export default function VisionMission() {
                                             ))}
                                         </div>
                                         <h3 className="text-3xl font-bold text-black leading-tight italic">
-                                            {content[activeTab].title} <br/>
+                                            {content[activeTab].title} <br />
                                             <span className="font-light text-gray-400 not-italic text-2xl">{content[activeTab].subtitle}</span>
                                         </h3>
                                     </div>

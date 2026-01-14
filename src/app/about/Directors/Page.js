@@ -12,7 +12,7 @@ export default function DirectorsPage() {
     const menuItems = [
         { name: "The Company", href: "/about/the-company" },
         { name: "Vision & Mission", href: "/about/vision-mission" },
-        { name: "Corporate Information", href: "/about/coperate-information" },
+        { name: "Corporate Information", href: "/about/corporate-information" },
         { name: "Directors", href: "/about/directors" },
         { name: "Management Team", href: "/about/management-team" },
         { name: "Sponsors", href: "/about/sponsors" },
@@ -60,7 +60,7 @@ export default function DirectorsPage() {
 
                     <div className="max-w-7xl mx-auto relative px-4 z-10">
                         <div className="bg-white shadow-2xl border border-gray-100 flex flex-col md:flex-row p-8 md:p-12 gap-8">
-                            
+
                             {/* MAIN CONTENT: Directors Accordion */}
                             <div className="flex-grow md:w-2/3">
                                 <div className="mb-8 inline-block">
@@ -72,11 +72,10 @@ export default function DirectorsPage() {
                                     {directors.map((director, index) => (
                                         <div key={index} className="border border-gray-200 overflow-hidden">
                                             {/* Accordion Header */}
-                                            <button 
+                                            <button
                                                 onClick={() => setOpenDirector(openDirector === index ? -1 : index)}
-                                                className={`w-full flex justify-between items-center p-4 text-left transition-colors ${
-                                                    openDirector === index ? "bg-[#8b0037] text-white" : "bg-white text-black hover:bg-gray-50"
-                                                }`}
+                                                className={`w-full flex justify-between items-center p-4 text-left transition-colors ${openDirector === index ? "bg-[#8b0037] text-white" : "bg-white text-black hover:bg-gray-50"
+                                                    }`}
                                             >
                                                 <span className="text-[18px] font-bold">{director.name}</span>
                                                 <span className="text-2xl font-light">
