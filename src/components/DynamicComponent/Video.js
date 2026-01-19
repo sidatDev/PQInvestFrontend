@@ -4,7 +4,9 @@ export default function Banner({ data }) {
     // Get Strapi base URL from environment or use default
     const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://127.0.0.1:2555";
     // Construct full video URL
-    const videoUrl = data?.video?.url ? `${STRAPI_URL}${data.video.url}` : null;
+    const videoUrl = data?.video?.url ? `${data.video.url}` : null;
+
+    console.log(videoUrl, 'Video URL');
 
     return (
         <section className="relative h-[75vh] w-full flex items-center justify-center overflow-hidden">

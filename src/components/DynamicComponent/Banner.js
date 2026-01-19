@@ -7,7 +7,7 @@ export default function Banner({ data }) {
     // Get Strapi base URL from environment or use default
     const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://127.0.0.1:2555";
     // Construct full image URL
-    const imageUrl = data?.bannerImg?.[0]?.url ? `${STRAPI_URL}${data.bannerImg[0].url}` : '/career-1200x346.png';
+    const imageUrl = data?.bannerImg?.[0]?.url ? `${data.bannerImg[0].url}` : '/career-1200x346.png';
 
     console.log(imageUrl, 'Banner image URL');
     return (
