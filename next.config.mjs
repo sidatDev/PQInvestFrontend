@@ -3,16 +3,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '2555',
+        protocol: 'https',
+        hostname: 'pqinvest-backend.sidattech.com',
         pathname: '/uploads/**',
       },
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '2555',
-        pathname: '/uploads/**',
+        protocol: 'https',
+        hostname: 'pqi-bucket.sidattech.com',
+        pathname: '/**',
       },
     ],
   },

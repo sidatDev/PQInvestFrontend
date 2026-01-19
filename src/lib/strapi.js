@@ -13,7 +13,7 @@ export async function fetchStrapi(path) {
         console.log("Fetching Strapi URL:", url.href);
         const res = await fetch(url.href, {
             headers: {
-                'Authorization': `Bearer 02e0c1f0ac427ee2bdce2d6cfe67c9c01e4254561225aba875f3fd1dc0c9bf46464c24fb395d23888e619a603690f83446e7c1a68f13637f24ff369d371ce3c659aec35e234d2031ea13925b0cf72f0f6a62fc9dd1c935d07393a31720dd4c49c997062944ff5d3799f3d1320507dd0299bd690b2cba77218e0dbfdfe16f4307`
+                'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`
             },
             cache: "no-store"
         }); // Disable cache for dev
