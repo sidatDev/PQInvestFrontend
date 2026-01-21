@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Footer({ data }) {
     // 1. Data nikalna
     const rawContent = data?.footer;
-    const { quickLinks, contactLinks, groupComapnies, FooterImages, BotFooter: cmsFooterText } = rawContent || {};
+    const { quickLinks, contactLinks, groupComapnies, imageLink, BotFooter: cmsFooterText } = rawContent || {};
 
     console.log("Raw Content:", rawContent);
     // 2. Logic: Agar data Object hai (Strapi Blocks), to usay text mein badlein.
@@ -12,7 +12,7 @@ export default function Footer({ data }) {
 
     if (Array.isArray(cmsFooterText)) {
         // Agar Strapi se 'Blocks' (Array) aa raha hai
-        finalBotFooter = cmsFooterText.map(block => 
+        finalBotFooter = cmsFooterText.map(block =>
             block.children?.map(child => child.text).join('')
         ).join(' ');
     } else if (typeof cmsFooterText === "string") {
@@ -75,27 +75,34 @@ export default function Footer({ data }) {
 
                 {/* Certifications/Logos */}
                 <div className="flex flex-col gap-3">
-                    {FooterImages?.map((img) => {
-                        let href = "#";
-                        if (img.name.toLowerCase().includes("jamapunji")) href = "https://jamapunji.pk/";
-                        if (img.name.toLowerCase().includes("secp")) href = "https://www.secp.gov.pk/";
-                        if (img.name.toLowerCase().includes("logo")) href = "/";
+                    {imageLink?.map((item) => {
+                        // Check if hidden
+                        if (item.isHidden) return null;
 
-                        // Use the full URL if available, otherwise construct it
-                        const imgSrc = img.url || img.formats?.thumbnail?.url;
-                        // Determine if we need to prepend the full URL domain if it's a relative path (unlikely for S3 but good for local)
+                        const href = item.link || "#";
+                        // Retrieve image url from the likely field name 'image' or 'icon' - defaulting to checking both or 'url' if it was a direct media field (unlikely for component)
+                        // Based on standard Strapi component with media, it's usually `item.image?.url`
+                        // We will allow for flexibility since we can't see the schema
+                        const imgObj = item.image || item.icon || item.FooterImages;
+                        const imgSrc = imgObj?.url || imgObj?.formats?.thumbnail?.url;
+
                         const finalSrc = imgSrc?.startsWith("http") ? imgSrc : (imgSrc ? `https://pqinvest-backend.sidattech.com${imgSrc}` : "");
 
-                         // Only render if we have a valid source
-                         if (!finalSrc) return null;
+                        // Only render if we have a valid source
+                        if (!finalSrc) return null;
 
                         return (
-                            <a key={img.id} href={href} target={href.startsWith("http") ? "_blank" : "_self"} rel={href.startsWith("http") ? "noopener noreferrer" : ""}>
+                            <a
+                                key={item.id}
+                                href={href}
+                                target={(item.isExternal || href.startsWith("http")) ? "_blank" : "_self"}
+                                rel={(item.isExternal || href.startsWith("http")) ? "noopener noreferrer" : ""}
+                            >
                                 <div className="bg-white p-1 rounded flex items-center justify-center">
-                                    <img 
-                                        src={finalSrc} 
-                                        alt={img.name} 
-                                        className="w-full h-auto object-contain max-h-[90px]" 
+                                    <img
+                                        src={finalSrc}
+                                        alt="Footer Logo"
+                                        className="w-full h-auto object-contain max-h-[90px]"
                                     />
                                 </div>
                             </a>
