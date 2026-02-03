@@ -8,6 +8,9 @@ export const API_ENDPOINTS = {
     // Google Analytics
     GOOGLE_TAG: '/api/gtag',
 
+    // Audit Logs
+    AUDIT_LOGS: '/api/audit-logs',
+
     // Add more endpoints here as needed
 };
 

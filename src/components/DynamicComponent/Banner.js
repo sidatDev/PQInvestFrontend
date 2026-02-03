@@ -2,14 +2,11 @@ import Image from "next/image";
 
 // components/Hero.js
 export default function Banner({ data }) {
-    console.log(data, 'Banner data from Strapi');
 
     // Get Strapi base URL from environment or use default
     const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://127.0.0.1:2555";
     // Construct full image URL
     const imageUrl = data?.bannerImg?.[0]?.url ? `${data.bannerImg[0].url}` : '/career-1200x346.png';
-
-    console.log(imageUrl, 'Banner image URL');
     return (
         <div className="relative w-full h-[346px]">
             <Image src={imageUrl} alt="Banner" fill className="object-cover" unoptimized />

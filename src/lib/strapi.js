@@ -65,3 +65,12 @@ export async function fetchGoogleTag() {
         return null;
     }
 }
+export async function fetchauditLog() {
+    try {
+        const data = await fetchStrapi(API_ENDPOINTS.AUDIT_LOGS);
+        return data;
+    } catch (error) {
+        console.error("Failed to fetch Audit Log:", error);
+        return null;
+    }
+}
