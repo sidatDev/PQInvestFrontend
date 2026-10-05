@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'pqi-bucket.sidattech.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'minio-s3-bucket-staging-api.srv130826.sidat.net',
+        pathname: '/**',
+      },
     ],
   },
 };
