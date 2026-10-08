@@ -10,6 +10,11 @@ import Breadcrumbs from "../DynamicComponent/Breadcrumbs";
  * Features: Max-width container, shadow/border, two-column layout
  */
 export default function Template1({ pageData }) {
+    // About Us ke saare pages par side menu consistent dikhe (CMS mein kuch pages par isHidden true hai)
+    const hasTocItems = pageData.TableOfContent?.TableOfContent?.length > 0;
+    const isAboutPage = pageData.slug?.startsWith('about-us/');
+    const showToc = pageData.TableOfContent?.isHidden === false || (isAboutPage && hasTocItems);
+
     return (
         <>
             {/* Banner (if not home page) */}
@@ -22,14 +27,14 @@ export default function Template1({ pageData }) {
                 <div className="max-w-7xl mx-auto px-4">
                     <Breadcrumbs data={pageData.BreadCrumbs} />
 
-                    <div className="bg-white shadow-2xl border border-gray-100 p-8 md:p-14">
+                    <div className="bg-white shadow-2xl border border-gray-100 p-5 sm:p-8 lg:p-14">
 
                         {/* Breadcrumbs */}
 
-                        {/* Content & Sidebar Wrapper */}
-                        <div className="flex flex-col md:flex-row gap-12">
+                        {/* Content & Sidebar Wrapper - 1024px se chhoti screen par sidebar content ke neechay */}
+                        <div className="flex flex-col lg:flex-row gap-12">
                             {/* Left: Content1 components */}
-                            <div className="flex-grow md:w-2/3">
+                            <div className="flex-grow min-w-0 lg:w-2/3">
                                 {pageData.Content1?.map((component, index) => (
                                     <DynamicComponentRenderer
                                         key={`${component.__component}-${index}`}
@@ -43,7 +48,7 @@ export default function Template1({ pageData }) {
                             </div>
 
                             {/* Right: Table of Contents Sidebar */}
-                            {pageData.TableOfContent?.isHidden === false && (
+                            {showToc && (
                                 <TableOfContent data={pageData.TableOfContent} />
                             )}
                         </div>

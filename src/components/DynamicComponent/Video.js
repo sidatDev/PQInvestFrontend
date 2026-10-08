@@ -16,6 +16,8 @@ export default function Banner({ data }) {
                 loop
                 muted
                 playsInline
+                preload="auto"
+                poster="/hero-poster.jpg"
                 className="absolute z-[-1] w-full h-full object-cover"
             >
                 <source src={videoUrl} type="video/mp4" />

@@ -15,12 +15,12 @@ export default function Tabs({ data }) {
     }
 
     return (
-        <div className="flex gap-10">
-            {/* Tabs & Title */}
-            <div className="flex flex-col  gap-2 relative pr-4  ">
-                <div className="pr-5 border-r-4 border-[#8b0037]">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 w-full min-w-0">
+            {/* Tabs & Title - Mobile/Tablet par statement box ke upar */}
+            <div className="flex flex-col gap-2 relative lg:pr-4 shrink-0">
+                <div className="pb-4 border-b-4 lg:pb-0 lg:pr-5 lg:border-b-0 lg:border-r-4 border-[#8b0037]">
 
-                    <div className="flex gap-1 bg-gray-100 p-1 w-fit rounded-sm">
+                    <div className="flex flex-wrap gap-1 bg-gray-100 p-1 w-fit max-w-full rounded-sm">
                         {tabs.map((tab, index) => (
                             <button
                                 key={index}
@@ -39,7 +39,7 @@ export default function Tabs({ data }) {
                             </button>
                         ))}
                     </div>
-                    <h3 className="text-3xl font-bold text-black leading-tight italic ">
+                    <h3 className="text-2xl lg:text-3xl font-bold text-black leading-[1.2] italic mt-2">
                         {tabs[activeTab]?.Title}
                     </h3>
                 </div>
@@ -55,7 +55,7 @@ export default function Tabs({ data }) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-gray-50 relative flex-1"
+                    className="bg-gray-50 relative flex-1 min-w-0 px-5 py-4 sm:px-8 sm:py-6"
                 >
 
                     <div

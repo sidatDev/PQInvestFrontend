@@ -101,7 +101,7 @@ export default function Footer({ data }) {
                                 <div className="bg-white p-1 rounded flex items-center justify-center">
                                     <img
                                         src={finalSrc}
-                                        alt="Footer Logo"
+                                        alt={imgObj?.alternativeText || "Footer Logo"}
                                         className="w-full h-auto object-contain max-h-[90px]"
                                     />
                                 </div>

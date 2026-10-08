@@ -14,4 +14,7 @@ export const API_ENDPOINTS = {
     // Add more endpoints here as needed
 };
 
-export { STRAPI_URL };
+// Public website URL (sitemap.xml / robots.txt ke liye)
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/+$/, "");
+
+export { STRAPI_URL, SITE_URL };

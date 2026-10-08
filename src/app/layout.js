@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { fetchGoogleTag } from "@/lib/strapi";
 import Footer from "@/components/Footers/Footer";
+import CmsScripts from "@/components/CmsScripts";
 
 
 
@@ -25,13 +26,9 @@ export default async function RootLayout({ children }) {
     <html lang="en" className={openSans.className}>
       <body className="antialiased">
         {/* Inject Google Tag Manager script at the start of body */}
-        {googleTagData?.GManager && (
-          <div dangerouslySetInnerHTML={{ __html: googleTagData.GManager }} />
-        )}
+        <CmsScripts html={googleTagData?.GManager} idPrefix="gmanager" />
         {/* Inject Google Analytics script */}
-        {googleTagData?.Gtag && (
-          <div dangerouslySetInnerHTML={{ __html: googleTagData.Gtag }} />
-        )}
+        <CmsScripts html={googleTagData?.Gtag} idPrefix="gtag" />
         {children}
   
       </body>

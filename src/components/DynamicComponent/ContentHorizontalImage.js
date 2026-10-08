@@ -17,10 +17,10 @@ export default function ContentHorizontalImage({ data }) {
                     : null;
 
                 return (
-                    <div key={index} className="flex gap-6">
-                        {/* Image - Full Width / Horizontal */}
+                    <div key={index} className="flex flex-col md:flex-row gap-6">
+                        {/* Image - Mobile par full width, text ke upar */}
                         {imageUrl && (
-                            <div className="w-full relative h-[300px] md:h-[400px]">
+                            <div className="w-full md:w-1/2 relative h-[220px] sm:h-[300px] md:h-[400px] shrink-0">
                                 <Image
                                     src={imageUrl}
                                     alt="Content Image"
@@ -32,7 +32,7 @@ export default function ContentHorizontalImage({ data }) {
                         )}
 
                         {/* Text Content */}
-                        <div className="w-full">
+                        <div className="w-full md:w-1/2 min-w-0">
                             <div
                                 className="rich-text-content text-gray-700 leading-relaxed text-[15px] space-y-4"
                                 dangerouslySetInnerHTML={{ __html: item.Text || '' }}

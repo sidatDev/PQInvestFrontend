@@ -45,11 +45,26 @@ export async function getPageBySlug(slugPoints) {
     const slugPath = slugPoints.join("/");
     console.log("Looking for slug:", slugPath);
 
-    const queryUrl = `${API_ENDPOINTS.WEB_PAGES}?filters[slug][$eq]=${slugPath}&populate[header][populate][web_menu][populate][Menu][populate]=*&populate[header][populate][LinkLeftSide]=*&populate[header][populate][LinkRightSide]=*&populate[Content1][populate]=*&populate[Content1][on][layout.content-with-image][populate][contentWithImage2][populate]=*&populate[Content1][on][layout.content-horizontal-image][populate][ContentHorizonalImage][populate]=*&populate[Content1][on][layout.video][populate]=*&populate[Content1][on][layout.accordion][populate]=*&populate[Content1][on][layout.tabs][populate]=*&populate[Content1][on][layout.content][populate]=*&populate[TableOfContent][populate]=*&populate[Banner][populate]=*&populate[BreadCrumbs][populate]=*&populate[metaTag][populate]=*&populate[footer][populate][imageLink][populate]=*&populate[footer][populate][quickLinks]=*&populate[footer][populate][contactLinks]=*&populate[footer][populate][groupComapnies]=*`;
+    const queryUrl = `${API_ENDPOINTS.WEB_PAGES}?filters[slug][$eq]=${encodeURIComponent(slugPath)}&populate[header][populate][web_menu][populate][Menu][populate]=*&populate[header][populate][LinkLeftSide]=*&populate[header][populate][LinkRightSide]=*&populate[Content1][populate]=*&populate[Content1][on][layout.content-with-image][populate][contentWithImage2][populate]=*&populate[Content1][on][layout.content-horizontal-image][populate][ContentHorizonalImage][populate]=*&populate[Content1][on][layout.video][populate]=*&populate[Content1][on][layout.accordion][populate]=*&populate[Content1][on][layout.tabs][populate]=*&populate[Content1][on][layout.content][populate]=*&populate[TableOfContent][populate]=*&populate[Banner][populate]=*&populate[BreadCrumbs][populate]=*&populate[metaTag][populate]=*&populate[footer][populate][imageLink][populate][image]=true&populate[footer][populate][quickLinks]=true&populate[footer][populate][contactLinks]=true&populate[footer][populate][groupComapnies]=true`;
 
     const data = await fetchStrapi(queryUrl);
     console.log("Received data:", data);
     return data && data.length > 0 ? data[0] : null;
+}
+
+/**
+ * Get slugs of all published pages (for sitemap)
+ * Version copies (slug containing "__ver_") are skipped
+ * @returns {Promise<Array<{slug: string, updatedAt: string}>>}
+ */
+export async function getAllPageSlugs() {
+    // Note: bina filter ke list query Strapi par 500 deti hai, is liye $notNull filter lagaya hai
+    const queryUrl = `${API_ENDPOINTS.WEB_PAGES}?filters[slug][$notNull]=true&fields[0]=slug&fields[1]=updatedAt&pagination[pageSize]=100`;
+
+    const data = await fetchStrapi(queryUrl);
+    if (!Array.isArray(data)) return [];
+
+    return data.filter((page) => page?.slug && !page.slug.includes("__ver_"));
 }
 
 /**

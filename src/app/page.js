@@ -10,8 +10,8 @@ export async function generateMetadata() {
 
   if (!pageData || !pageData.metaTag || !Array.isArray(pageData.metaTag)) {
     return {
-      title: 'Pak-Qatar Family Takaful',
-      description: 'Pak-Qatar Family Takaful - Trusted Islamic Insurance',
+      title: 'Pak-Qatar Investment',
+      description: 'Pak-Qatar Investment - Together We Prosper',
     };
   }
 
@@ -22,8 +22,8 @@ export async function generateMetadata() {
   });
 
   return {
-    title: metaTagMap['title'] || 'Pak-Qatar Family Takaful',
-    description: metaTagMap['description'] || 'Pak-Qatar Family Takaful - Trusted Islamic Insurance',
+    title: metaTagMap['title'] || 'Pak-Qatar Investment',
+    description: metaTagMap['description'] || 'Pak-Qatar Investment - Together We Prosper',
     keywords: metaTagMap['keywords'] || '',
   };
 }

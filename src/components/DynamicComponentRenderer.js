@@ -51,7 +51,7 @@ export default function DynamicComponentRenderer({ component, index, tableOfCont
 
     // For other pages, render with wrapper and conditional margin
     return (
-        <div className={`flex flex-grow gap-10 ${isLast ? '' : 'mb-10'}`}>
+        <div className={`flex flex-col lg:flex-row flex-grow gap-10 min-w-0 ${isLast ? '' : 'mb-10'}`}>
             <Component key={index} data={component} />
             {tableOfContent?.isHidden == false && <TableOfContent data={tableOfContent} />}
         </div>

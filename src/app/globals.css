@@ -39,7 +39,7 @@ body {
   font-size: 2.25rem;
   font-weight: bold;
   color: black;
-  line-height: 0.7;
+  line-height: 1.2;
   margin-bottom: 2rem;
 }
 
@@ -51,6 +51,7 @@ body {
   font-size: 1.875rem;
   font-weight: bold;
   color: black;
+  line-height: 1.2;
   margin-bottom: 1.5rem;
 }
 
@@ -58,11 +59,40 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   color: #8b0037;
+  line-height: 1.2;
   margin-bottom: 1rem;
+}
+
+/* CMS content mein kuch headings par inline style "line-height:0.7" aata hai - usay override karna */
+.rich-text-content h1,
+.rich-text-content h2,
+.rich-text-content h3,
+.rich-text-content h4 {
+  line-height: 1.2 !important;
+}
+
+/* Mobile/Tablet par headings choti taake 2 lines overlap na hon */
+@media (max-width: 1023px) {
+  .rich-text-content h1 {
+    font-size: 2rem;
+  }
+
+  .rich-text-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .rich-text-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .rich-text-content h4 {
+    font-size: 1.25rem;
+  }
 }
 
 .rich-text-content p {
   margin-bottom: 1.5rem;
+  text-align: justify;
 }
 
 .rich-text-content ul,
@@ -105,6 +135,15 @@ body {
 }
 
 
+/* CKEditor table ko <figure class="table"> mein wrap karta hai - choti screens par horizontal scroll */
+.rich-text-content figure.table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 15px;
+}
+
 .rich-text-content table {
   background-color: #f8f8f8;
   color: #8b0037;
@@ -113,7 +152,42 @@ body {
   margin-bottom: 15px;
 }
 
+.rich-text-content figure.table table {
+  margin-bottom: 0;
+}
+
 .rich-text-content table td {
   border: 1px solid #c7c7c7;
   padding: 10px 12px;
+  overflow-wrap: anywhere;
+}
+
+.rich-text-content table td p {
+  text-align: left;
+}
+
+/* Mobile par table rows stack ho jayen (label upar, value neechay) */
+@media (max-width: 639px) {
+
+  .rich-text-content table,
+  .rich-text-content table tbody,
+  .rich-text-content table tr,
+  .rich-text-content table td {
+    display: block;
+    width: 100%;
+  }
+
+  .rich-text-content table tr {
+    border-bottom: 1px solid #c7c7c7;
+  }
+
+  .rich-text-content table td {
+    border: none;
+    padding: 8px 12px;
+  }
+
+  .rich-text-content table td:first-child {
+    font-weight: 600;
+    padding-bottom: 0;
+  }
 }

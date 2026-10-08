@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
+import DesktopDropdown from "./DesktopDropdown";
+import { formatPhone } from "@/lib/links";
 
 export default function Header({ data }) {
     console.log(data, 'headerData')
@@ -7,8 +10,8 @@ export default function Header({ data }) {
     return (
         <header className="w-full font-sans relative z-50 ">
             {/* Top Maroon Bar */}
-            <div className="bg-[#8b0037] text-white text-[15px] py-2 px-6 md:px-8  leading-[25px] ">
-                <div className="max-w-7xl flex justify-between items-center mx-auto">
+            <div className="bg-[#8b0037] text-white text-[13px] sm:text-[15px] py-2 px-4 sm:px-6 md:px-8 leading-[25px]">
+                <div className="max-w-7xl flex flex-wrap justify-between items-center gap-x-4 gap-y-1 mx-auto">
                     
                     {/* Left Side: Phone Numbers & Links */}
                     <div className="flex items-center gap-4">
@@ -19,7 +22,9 @@ export default function Header({ data }) {
                             }
 
                             const isPhone = item?.Title?.toLowerCase().includes('phone') || item?.link?.startsWith('+');
-                            const hrefValue = isPhone ? `tel:${item?.link}` : item?.link;
+                            const phone = isPhone ? formatPhone(item?.link) : null;
+                            const hrefValue = isPhone ? phone.href : item?.link;
+                            const label = isPhone ? phone.display : item?.link;
 
                             return (
                                 <div key={index} className="flex items-center gap-2">
@@ -36,7 +41,7 @@ export default function Header({ data }) {
                                         rel="noopener noreferrer"
                                         className="hover:underline cursor-pointer"
                                     >
-                                        {item?.link}
+                                        {label}
                                     </Link>
                                 </div>
                             );
@@ -99,48 +104,7 @@ export default function Header({ data }) {
                         const hasDropdown = item?.Menu && item.Menu.length > 0;
 
                         if (hasDropdown) {
-                            const midPoint = Math.ceil(item.Menu.length / 2);
-                            const firstColumn = item.Menu.slice(0, midPoint);
-                            const secondColumn = item.Menu.slice(midPoint);
-
-                            return (
-                                <li key={index} className="group relative cursor-pointer py-2 text-[#8b0037] text-[15px] font-[400]">
-                                    <div className="flex items-center gap-1">
-                                        {item?.TItle} <span className="text-[12px]">▾</span>
-                                    </div>
-                                    <span className="absolute bottom-[-5px] left-0 w-0 h-[4px] bg-[#8b0037] transition-all duration-300 group-hover:w-full"></span>
-
-                                    <div className="absolute top-[100%] left-[-100px] hidden group-hover:block bg-white shadow-[0_15px_35px_rgba(0,0,0,0.1)] min-w-[550px] p-8 mt-[2px] z-[100] border-t-0">
-                                        <h3 className="text-[#8b0037] text-[20px] font-bold mb-4 uppercase">
-                                            {item?.TItle}
-                                        </h3>
-                                        <div className="grid grid-cols-2 gap-x-16 gap-y-2">
-                                            <div className="flex flex-col gap-2">
-                                                {firstColumn.map((subItem, subIndex) => (
-                                                    <Link
-                                                        key={subIndex}
-                                                        href={`/${item?.Link}/${subItem?.Link}` || '#'}
-                                                        className="text-[#333] text-[14px] underline decoration-1 underline-offset-4 hover:text-black w-fit"
-                                                    >
-                                                        {subItem?.Title}
-                                                    </Link>
-                                                ))}
-                                            </div>
-                                            <div className="flex flex-col gap-2">
-                                                {secondColumn.map((subItem, subIndex) => (
-                                                    <Link
-                                                        key={subIndex}
-                                                        href={`/${item?.Link}/${subItem?.Link}` || '#'}
-                                                        className="text-[#333] text-[14px] underline decoration-1 underline-offset-4 hover:text-black w-fit"
-                                                    >
-                                                        {subItem?.Title}
-                                                    </Link>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            );
+                            return <DesktopDropdown key={index} item={item} />;
                         } else {
                             return (
                                 <li key={index} className="group relative cursor-pointer py-2 text-[#8b0037] text-[15px] font-[400]">
@@ -152,7 +116,7 @@ export default function Header({ data }) {
                     })}
                 </ul>
 
-                <div className="lg:hidden text-[#8b0037] text-2xl cursor-pointer">☰</div>
+                <MobileMenu menu={data?.web_menu?.Menu} />
             </nav>
         </header>
     );

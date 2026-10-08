@@ -13,8 +13,8 @@ export async function generateMetadata({ params }) {
 
     if (!pageData || !pageData.metaTag || !Array.isArray(pageData.metaTag)) {
         return {
-            title: 'Pak-Qatar Family Takaful',
-            description: 'Pak-Qatar Family Takaful - Trusted Islamic Insurance',
+            title: 'Pak-Qatar Investment',
+            description: 'Pak-Qatar Investment - Together We Prosper',
         };
     }
 
@@ -25,8 +25,8 @@ export async function generateMetadata({ params }) {
     });
 
     return {
-        title: metaTagMap['title'] || 'Pak-Qatar Family Takaful',
-        description: metaTagMap['description'] || 'Pak-Qatar Family Takaful - Trusted Islamic Insurance',
+        title: metaTagMap['title'] || 'Pak-Qatar Investment',
+        description: metaTagMap['description'] || 'Pak-Qatar Investment - Together We Prosper',
         keywords: metaTagMap['keywords'] || '',
     };
 }
@@ -36,17 +36,9 @@ export default async function Page({ params }) {
     const { slug } = await params;
     const pageData = await getPageBySlug(slug);
 
-    console.log("Page data aaa:", pageData.metaTag);
-
     if (!pageData) {
         console.log("Page not found for slug:", slug);
-        return (
-            <div className="p-10 text-red-600">
-                <h1 className="text-2xl font-bold">404 - Page Not Found</h1>
-                <p>Could not find a page in Strapi with slug: <strong>{slug.join("/")}</strong></p>
-                <p className="mt-4 text-gray-600 text-sm">Target API URL: {process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://127.0.0.1:2555"}/api/web-pages?filters[slug][$eq]={slug.join("/")}</p>
-            </div>
-        );
+        notFound();
     }
 
 
@@ -56,7 +48,7 @@ export default async function Page({ params }) {
             <main className="overflow-x-hidden">
                 <TemplateRenderer pageData={pageData} />
             </main>
-            <Footer />
+            <Footer data={pageData} />
         </React.Fragment>
     );
 }
