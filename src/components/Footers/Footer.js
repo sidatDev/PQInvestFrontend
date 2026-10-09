@@ -29,7 +29,7 @@ export default function Footer({ data }) {
 
                 {/* QUICK LINKS */}
                 <div>
-                    <h3 className="text-[#b89733] font-bold border-b border-white/20 mb-4 pb-1 tracking-wider text-[15px]">
+                    <h3 className="text-[#b89733] font-bold mb-4 pb-1 tracking-wider text-[15px]">
                         QUICK LINKS
                     </h3>
                     <ul className="space-y-2 font-light">
@@ -45,7 +45,7 @@ export default function Footer({ data }) {
 
                 {/* CONTACT US */}
                 <div>
-                    <h3 className="text-[#b89733] font-bold border-b border-white/20 mb-4 pb-1 tracking-wider text-[15px]">
+                    <h3 className="text-[#b89733] font-bold mb-4 pb-1 tracking-wider text-[15px]">
                         CONTACT US
                     </h3>
                     <div className="space-y-1 font-light leading-snug">
@@ -59,7 +59,7 @@ export default function Footer({ data }) {
 
                 {/* GROUP COMPANIES */}
                 <div>
-                    <h3 className="text-[#b89733] font-bold border-b border-white/20 mb-4 pb-1 tracking-wider text-[15px]">
+                    <h3 className="text-[#b89733] font-bold mb-4 pb-1 tracking-wider text-[15px]">
                         GROUP COMPANIES
                     </h3>
                     <ul className="space-y-2 font-light">

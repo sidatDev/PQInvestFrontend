@@ -25,7 +25,7 @@ export default function Template1({ pageData }) {
             {/* Main Content with Sidebar */}
             <div className="bg-[#F7F7F7] w-full pt-5 pb-12">
                 <div className="max-w-7xl mx-auto px-4">
-                    <Breadcrumbs data={pageData.BreadCrumbs} />
+                    <Breadcrumbs data={pageData.BreadCrumbs} pageSlug={pageData.slug} />
 
                     <div className="bg-white shadow-2xl border border-gray-100 p-5 sm:p-8 lg:p-14">
 

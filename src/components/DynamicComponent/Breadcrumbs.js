@@ -2,15 +2,21 @@ import Link from 'next/link';
 import React from 'react';
 import { toAbsolutePath } from '@/lib/links';
 
-export default function Breadcrumbs({ data }) {
+// Ye sections ka apna page nahi hai - inke breadcrumb par click karne se user usi page par rahe
+const SECTIONS_WITHOUT_PAGE = ['/about-us'];
+
+export default function Breadcrumbs({ data, pageSlug }) {
     if (!data || data.length === 0) return null;
+
+    const currentPath = pageSlug ? `/${pageSlug}` : null;
 
     return (
         <nav aria-label="Breadcrumb" className="flex flex-wrap items-center text-sm md:text-base mb-5 uppercase tracking-wide font-medium">
             {data.map((item, index) => {
                 const isLast = index === data.length - 1;
                 // Pehla item (Home) ka link khali ho to "/" par jaye
-                const href = toAbsolutePath(item.link) || (index === 0 ? '/' : null);
+                let href = toAbsolutePath(item.link) || (index === 0 ? '/' : null);
+                if (href && currentPath && SECTIONS_WITHOUT_PAGE.includes(href)) href = currentPath;
 
                 return (
                     <div key={index} className="flex items-center">
